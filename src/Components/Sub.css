@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    .main-container{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.main-container{
+    background-color: red ;
+}
+
+body{
+    background-color: red;
+}
