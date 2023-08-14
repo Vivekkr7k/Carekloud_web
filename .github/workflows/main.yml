@@ -1,0 +1,33 @@
+name: Deploy to cPanel Shared Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: build
+        run: npm run build
+
+      - name: Deploy to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ftp.cyborgsapient.com
+          username: ftp1@carekloud.com
+          password: 9hvrfay4130x
+          local-dir: build/
